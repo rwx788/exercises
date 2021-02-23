@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriangleChecker.Views.Validator">
+    <StackLayout>
+        <BoxView HeightRequest="1" BackgroundColor="#2196F3" HorizontalOptions="FillAndExpand" />
+        <Entry x:Name="sideA" Placeholder="Side A" Keyboard="Numeric" Completed="EntryCompleted" />
+        <Entry Placeholder="Side B" Keyboard="Numeric" Completed="EntryCompleted" />
+        <Entry Placeholder="Side C" Keyboard="Numeric" Completed="EntryCompleted" />
+        <Button Text="Run" 
+                Clicked="RunButtonClicked" />
+        <BoxView HeightRequest="1" BackgroundColor="#2196F3" HorizontalOptions="FillAndExpand" />
+        <Label x:Name="resultText" FontSize="36" FontAttributes="Bold" BackgroundColor="Black" Text="Please Enter Values"
+              TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+    </StackLayout>
+</ContentView>
