@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace TriangleChecker.Controllers.Tests
 {
@@ -9,7 +10,6 @@ namespace TriangleChecker.Controllers.Tests
         public void GetTriangleTypeTestNone()
         {
             Assert.AreEqual(TriangleTypes.None, ValidatorController.GetTriangleType(0, 0, 0));
-            Assert.AreEqual(TriangleTypes.None, ValidatorController.GetTriangleType(-1, -5, -3));
             Assert.AreEqual(TriangleTypes.None, ValidatorController.GetTriangleType(1, 5, 3));
         }
 
@@ -34,11 +34,11 @@ namespace TriangleChecker.Controllers.Tests
         [TestMethod]
         public void GetTriangleTypeTestMaxValue()
         {
-            Assert.AreEqual(TriangleTypes.None,        ValidatorController.GetTriangleType(2147483647, 1000000000, 1000000000));
-            Assert.AreEqual(TriangleTypes.Equilateral, ValidatorController.GetTriangleType(2147483647, 2147483647, 2147483647));
-            Assert.AreEqual(TriangleTypes.Isosceles,   ValidatorController.GetTriangleType(2147483647, 13, 2147483647));
-            Assert.AreEqual(TriangleTypes.Isosceles,   ValidatorController.GetTriangleType(2147483647, 2147483647, 2147483647));
-            Assert.AreEqual(TriangleTypes.Scalene,     ValidatorController.GetTriangleType(2147483647, 2147400000, 2147312344));
+            Assert.AreEqual(TriangleTypes.None, ValidatorController.GetTriangleType(UInt32.MaxValue, 1000000000, 1000000000));
+            Assert.AreEqual(TriangleTypes.Equilateral, ValidatorController.GetTriangleType(UInt32.MaxValue, UInt32.MaxValue, UInt32.MaxValue));
+            Assert.AreEqual(TriangleTypes.Isosceles, ValidatorController.GetTriangleType(UInt32.MaxValue, 13, UInt32.MaxValue));
+            Assert.AreEqual(TriangleTypes.Isosceles, ValidatorController.GetTriangleType(UInt32.MaxValue, UInt32.MaxValue - 5, UInt32.MaxValue));
+            Assert.AreEqual(TriangleTypes.Scalene, ValidatorController.GetTriangleType(UInt32.MaxValue, UInt32.MaxValue - 10000, UInt32.MaxValue - 5000));
         }
 
     }

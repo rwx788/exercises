@@ -20,7 +20,7 @@ namespace TriangleChecker.Views
         {
             try
             {
-                Enum type = ValidatorController.GetTriangleType(Int32.Parse(sideA.Text), Int32.Parse(sideB.Text), Int32.Parse(sideC.Text));
+                Enum type = ValidatorController.GetTriangleType(UInt32.Parse(sideA.Text), UInt32.Parse(sideB.Text), UInt32.Parse(sideC.Text));
 
                 switch (type)
                 {

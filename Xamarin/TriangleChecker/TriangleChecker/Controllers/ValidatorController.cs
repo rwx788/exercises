@@ -6,7 +6,7 @@ namespace TriangleChecker.Controllers
 
     public class ValidatorController
     {
-        public static Enum GetTriangleType(Int32 sideA, Int32 sideB, Int32 sideC)
+        public static Enum GetTriangleType(UInt32 sideA, UInt32 sideB, UInt32 sideC)
         {
             if (sideA + sideB <= sideC || sideB + sideC <= sideA || sideC + sideA <= sideB)
                 return TriangleTypes.None;
