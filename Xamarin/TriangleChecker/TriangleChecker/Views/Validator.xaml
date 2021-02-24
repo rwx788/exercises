@@ -4,9 +4,9 @@
              x:Class="TriangleChecker.Views.Validator">
     <StackLayout>
         <BoxView HeightRequest="1" BackgroundColor="#2196F3" HorizontalOptions="FillAndExpand" />
-        <Entry x:Name="sideA" Placeholder="Side A" Keyboard="Numeric" Completed="EntryCompleted" />
-        <Entry Placeholder="Side B" Keyboard="Numeric" Completed="EntryCompleted" />
-        <Entry Placeholder="Side C" Keyboard="Numeric" Completed="EntryCompleted" />
+        <Entry x:Name="sideA" Placeholder="Side A" Keyboard="Text" Completed="EntryCompleted" />
+        <Entry Placeholder="Side B" Keyboard="Text" Completed="EntryCompleted" />
+        <Entry Placeholder="Side C" Keyboard="Text" Completed="EntryCompleted" />
         <Button Text="Run" 
                 Clicked="RunButtonClicked" />
         <BoxView HeightRequest="1" BackgroundColor="#2196F3" HorizontalOptions="FillAndExpand" />
