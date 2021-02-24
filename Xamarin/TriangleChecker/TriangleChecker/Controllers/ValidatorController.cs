@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace TriangleChecker.Controllers
 {
@@ -9,9 +6,9 @@ namespace TriangleChecker.Controllers
 
     public class ValidatorController
     {
-        public static Enum GetTriangleType(Int32 sideA, Int32 sideB, Int32 sideC) 
+        public static Enum GetTriangleType(Int32 sideA, Int32 sideB, Int32 sideC)
         {
-            if(sideA + sideB <= sideC || sideB + sideC <= sideA || sideC + sideA <= sideB)
+            if (sideA + sideB <= sideC || sideB + sideC <= sideA || sideC + sideA <= sideB)
                 return TriangleTypes.None;
 
             if (sideA == sideB && sideB == sideC && sideC == sideA)

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TriangleChecker.Controllers;
 
 using Xamarin.Forms;
@@ -12,7 +9,7 @@ using Xamarin.Forms.Xaml;
 namespace TriangleChecker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Validator: ContentView
+    public partial class Validator : ContentView
     {
         public Validator()
         {
@@ -45,7 +42,7 @@ namespace TriangleChecker.Views
             catch (FormatException ex)
             {
                 Debug.WriteLine("Unable to parse input: " + ex.Message);
-            }            
+            }
         }
 
         private void EntryCompleted(object sender, EventArgs e)
