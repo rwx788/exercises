@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Header.xaml">
+    <EmbeddedResource Update="Views\HeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Validator.xaml">
+    <EmbeddedResource Update="Views\ValidatorView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Header.xaml.cs">
-      <DependentUpon>Header.xaml</DependentUpon>
+    <Compile Update="Views\HeaderView.xaml.cs">
+      <DependentUpon>HeaderView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Validator.xaml.cs">
-      <DependentUpon>Validator.xaml</DependentUpon>
+    <Compile Update="Views\ValidatorView.xaml.cs">
+      <DependentUpon>ValidatorView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

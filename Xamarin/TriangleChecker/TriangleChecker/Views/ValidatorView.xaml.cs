@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TriangleChecker.Controllers;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +21,31 @@ namespace TriangleChecker.Views
 
         private void RunButtonClicked(object sender, EventArgs e)
         {
-            
+            try
+            {
+                Enum type = ValidatorController.GetTriangleType(Int32.Parse(sideA.Text), Int32.Parse(sideB.Text), Int32.Parse(sideC.Text));
+
+                switch (type)
+                {
+                    case TriangleTypes.Equilateral:
+                        resultText.Text = "Triangle is Equilateral";
+                        break;
+                    case TriangleTypes.Isosceles:
+                        resultText.Text = "Triangle is Isosceles";
+                        break;
+                    case TriangleTypes.Scalene:
+                        resultText.Text = "Triangle is Scalene";
+                        break;
+                    case TriangleTypes.None:
+                        resultText.Text = "Triangle with provided sides does NOT exist";
+                        break;
+                }
+
+            }
+            catch (FormatException ex)
+            {
+                Debug.WriteLine("Unable to parse input: " + ex.Message);
+            }            
         }
 
         private void EntryCompleted(object sender, EventArgs e)
