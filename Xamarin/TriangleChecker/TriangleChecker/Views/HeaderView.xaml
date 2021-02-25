@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TriangleChecker.Views.Header">
+             xmlns:constants="clr-namespace:TriangleChecker.Resources"
+             x:Class="TriangleChecker.Views.HeaderView">
     <Frame BackgroundColor="#2196F3" Padding="10" CornerRadius="0">
-        <Label Text="Welcome to Triangle Checker" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        <Label Text="{x:Static constants:HeaderRes.HeaderLabelText}"
+               HorizontalTextAlignment="Center"
+               TextColor="White"
+               FontSize="24"/>
     </Frame>
 </ContentView>

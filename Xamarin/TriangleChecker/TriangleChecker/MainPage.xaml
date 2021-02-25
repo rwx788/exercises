@@ -5,8 +5,7 @@
              xmlns:views="clr-namespace:TriangleChecker.Views">
 
     <StackLayout Margin="20">
-        <views:Header />
-        <views:Validator />
+        <views:HeaderView />
+        <views:ValidatorView />
     </StackLayout>
-
 </ContentPage>

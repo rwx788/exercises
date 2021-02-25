@@ -5,13 +5,14 @@ using TriangleChecker.Controllers;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TriangleChecker.Resources;
 
 namespace TriangleChecker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Validator : ContentView
+    public partial class ValidatorView : ContentView
     {
-        public Validator()
+        public ValidatorView()
         {
             InitializeComponent();
         }
@@ -25,19 +26,18 @@ namespace TriangleChecker.Views
                 switch (type)
                 {
                     case TriangleTypes.Equilateral:
-                        resultText.Text = "Triangle is Equilateral";
+                        resultText.Text = ValidatorRes.ResultEquilateral;
                         break;
                     case TriangleTypes.Isosceles:
-                        resultText.Text = "Triangle is Isosceles";
+                        resultText.Text = ValidatorRes.ResultIsosceles;
                         break;
                     case TriangleTypes.Scalene:
-                        resultText.Text = "Triangle is Scalene";
+                        resultText.Text = ValidatorRes.ResultScalene;
                         break;
                     case TriangleTypes.None:
-                        resultText.Text = "Triangle with provided sides does NOT exist";
+                        resultText.Text = ValidatorRes.ResultNone;
                         break;
                 }
-
             }
             catch (FormatException ex)
             {
