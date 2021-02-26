@@ -79,7 +79,7 @@ namespace TriangleChecker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to resultText.
         /// </summary>
         public static string ResultLabelid {
             get {

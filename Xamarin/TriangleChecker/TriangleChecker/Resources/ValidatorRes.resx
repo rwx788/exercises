@@ -126,7 +126,8 @@
     <comment>Text for the result when triangle is isosceles</comment>
   </data>
   <data name="ResultLabelid" xml:space="preserve">
-    <value />
+    <value>resultText</value>
+    <comment>Id for the label which denotes evaluation result</comment>
   </data>
   <data name="ResultLabelText" xml:space="preserve">
     <value>Please Enter Values</value>
