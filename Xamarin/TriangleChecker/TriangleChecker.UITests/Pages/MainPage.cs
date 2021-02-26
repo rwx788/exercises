@@ -27,6 +27,27 @@ namespace TriangleChecker.UITests.Pages
             }
         }
 
+        public MainPage CleanAllEntries()
+        {
+            EnterText(ValidatorRes.SideAid, "");
+            EnterText(ValidatorRes.SideBid, "");
+            EnterText(ValidatorRes.SideCid, "");
+            return this;
+        }
+
+        public string GetResultText()
+        {
+            // WaitForElement throws TimeoutException if no element is found
+            // Therefore it is safe to access element at index 0
+            return app.WaitForElement(lblResult).ElementAt(0).Text;
+        }
+
+    public MainPage EnterSideLengths(string sideA, string sideB, string sideC)
+        {
+            SetSideALength(sideA).SetSideBLength(sideB).SetSideCLength(sideC);
+            return this;
+        }
+
         public bool IsHeaderDisplayed()
         {
             return app.WaitForElement(lblHeader).Any();
@@ -57,11 +78,5 @@ namespace TriangleChecker.UITests.Pages
             return this;
         }
 
-        public string GetResultText()
-        {
-            // WaitForElement throws TimeoutException if no element is found
-            // Therefore it is safe to access element at index 0
-            return app.WaitForElement(lblResult).ElementAt(0).Text;
-        }
     }
 }

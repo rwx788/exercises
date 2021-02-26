@@ -2,7 +2,7 @@
 
 namespace TriangleChecker.UITests
 {
-    public class AppManager
+    public static class AppManager
     {
         public static IApp App
         { get; set; }
