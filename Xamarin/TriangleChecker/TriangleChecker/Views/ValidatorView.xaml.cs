@@ -21,6 +21,18 @@ namespace TriangleChecker.Views
         {
             try
             {
+                UInt32 uintsideA, uintsideB, uintsideC;
+
+                uintsideA = ValidatorController.ParseInput(sideA.Text);
+                uintsideB = ValidatorController.ParseInput(sideB.Text);
+                uintsideC = ValidatorController.ParseInput(sideC.Text);
+
+                if(uintsideA == 0  || uintsideB == 0 || uintsideC == 0)
+                {
+                    resultText.Text = ValidatorRes.InvalidInput;
+                    return;
+                }
+
                 Enum type = ValidatorController.GetTriangleType(UInt32.Parse(sideA.Text), UInt32.Parse(sideB.Text), UInt32.Parse(sideC.Text));
 
                 switch (type)

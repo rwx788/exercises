@@ -61,6 +61,15 @@ namespace TriangleChecker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot parse the input, please use integer values between [1:4294967295].
+        /// </summary>
+        public static string InvalidInput {
+            get {
+                return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triangle is Equilateral.
         /// </summary>
         public static string ResultEquilateral {

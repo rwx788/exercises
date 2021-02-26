@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace TriangleChecker.Controllers
 {
@@ -26,6 +27,15 @@ namespace TriangleChecker.Controllers
                 return TriangleTypes.Isosceles;
 
             return TriangleTypes.Scalene;
+        }
+
+        public static UInt32 ParseInput(string input)
+        {
+
+            UInt32 number;
+            bool result = UInt32.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out number);
+ 
+            return result ? number : 0;
         }
     }
 }
