@@ -59,9 +59,9 @@ namespace TriangleChecker.UITests.Pages
 
         public string GetResultText()
         {
-            return app.Query(lblResult)[0].Text;
-
-
+            // WaitForElement throws TimeoutException if no element is found
+            // Therefore it is safe to access element at index 0
+            return app.WaitForElement(lblResult).ElementAt(0).Text;
         }
     }
 }

@@ -31,8 +31,8 @@ namespace TriangleChecker.UITests
         {
             Pages.MainPage mainPage = new Pages.MainPage();
             mainPage.SetSideALength(sideA);
-            mainPage.SetSideALength(sideB);
-            mainPage.SetSideALength(sideC);
+            mainPage.SetSideBLength(sideB);
+            mainPage.SetSideCLength(sideC);
             mainPage.PressRunButton();
             Assert.AreEqual(ValidatorRes.ResultEquilateral, mainPage.GetResultText());
         }
