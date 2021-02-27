@@ -53,7 +53,7 @@ namespace TriangleChecker.UITests
         }
 
         [TestCase("7", "4", "3")]
-        [TestCase("17 ", " 7", "13")]
+        [TestCase("20 ", " 7", "13 ")]
         public void TestNotTriangle(string sideA, string sideB, string sideC)
         {
             mainPage.EnterSideLengths(sideA: sideA, sideB: sideB, sideC: sideC);
@@ -61,19 +61,20 @@ namespace TriangleChecker.UITests
             Assert.AreEqual(ValidatorRes.ResultNone, mainPage.GetResultText());
         }
 
-        [TestCase("0", "5", "9")]
-        [TestCase("5.0", "5.3", "5.0")]
-        [TestCase("5", "-1", "3")]
-        [TestCase("7", "7", "-9223372036854775808")]
-        [TestCase("18446744073709551615", "18446744073709551615", "18446744073709551615")]
-        [TestCase("", "", "")]
-        [TestCase("а", "Б", "𐐷")]
-        [TestCase("1 7 ", " 7", "1 3")]
+        [TestCase("5.0", "1 7", "-9223372036854775808")]
+        [TestCase("18446744073709551615", "𐐷", "")]
         public void TesInvalidInput(string sideA, string sideB, string sideC)
         {
             mainPage.EnterSideLengths(sideA: sideA, sideB: sideB, sideC: sideC);
             mainPage.PressRunButton();
-            Assert.AreEqual(ValidatorRes.ResultNone, mainPage.GetResultText());
+            Assert.AreEqual(ValidatorRes.InvalidInput, mainPage.GetResultText());
+        }
+
+        [TestCase(Description = "Test output when Run button is pressed without any input")]
+        public void TestNoInput()
+        {
+            mainPage.PressRunButton();
+            Assert.AreEqual(ValidatorRes.InvalidInput, mainPage.GetResultText());
         }
     }
 }
