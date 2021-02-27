@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 
 namespace TriangleChecker.Controllers.Tests
@@ -61,7 +61,7 @@ namespace TriangleChecker.Controllers.Tests
         [TestMethod]
         [Description("Test unsigned integer parsing using random integer from the valid range")]
         public void ParseInputTestValidInput()
-        {            
+        {
 
             // Add +1 as valid range is from [1:UInt32.MaxValue]
             UInt32 rndmInput = (UInt32)(rand.Next(int.MaxValue) + 1);
