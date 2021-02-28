@@ -49,6 +49,9 @@ namespace TriangleChecker.Views
                     case TriangleTypes.None:
                         resultText.Text = ValidatorRes.ResultNone;
                         break;
+                    default:
+                        resultText.Text = ValidatorRes.UnknownTriangleType;
+                        break;
                 }
             }
             catch (FormatException ex)

@@ -173,4 +173,8 @@
     <value>Side C</value>
     <comment>Placeholder for the side C textbox</comment>
   </data>
+  <data name="UnknownTriangleType" xml:space="preserve">
+    <value>Triangle with given sides exists, but it's type is unknown</value>
+    <comment>Text if unknown type of the triangle is returned</comment>
+  </data>
 </root>

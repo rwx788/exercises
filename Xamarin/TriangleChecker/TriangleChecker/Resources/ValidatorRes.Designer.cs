@@ -185,5 +185,14 @@ namespace TriangleChecker.Resources {
                 return ResourceManager.GetString("SideCPlaceholder", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triangle with given sides exists, but it&apos;s type is unknown.
+        /// </summary>
+        public static string UnknownTriangleType {
+            get {
+                return ResourceManager.GetString("UnknownTriangleType", resourceCulture);
+            }
+        }
     }
 }
