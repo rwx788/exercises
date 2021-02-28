@@ -44,13 +44,13 @@ namespace TriangleChecked.UnitTests
             Random rand = new Random();
             // Add +1 as valid range is from [1:UInt32.MaxValue]
             UInt32 rndmInput = (UInt32)(rand.Next(int.MaxValue) + 1);
-            Assert.AreEqual(rndmInput, ValidatorController.ParseInput(rndmInput.ToString()));
+            Assert.AreEqual(rndmInput, ValidatorController.ParseTriangleSideLength(rndmInput.ToString()));
         }
 
         [TestCase(Description = "Test parsing maximal allowed value")]
         public void ParseInputTestMaxInput()
         {
-            Assert.AreEqual(UInt32.MaxValue, ValidatorController.ParseInput(UInt32.MaxValue.ToString()));
+            Assert.AreEqual(UInt32.MaxValue, ValidatorController.ParseTriangleSideLength(UInt32.MaxValue.ToString()));
         }
 
         // Storing UInt32 zero as a constant, as return type is UInt32
@@ -65,7 +65,7 @@ namespace TriangleChecked.UnitTests
         [TestCase(" 555 ", ExpectedResult = (UInt32)555, Description = "Test parsing non trimmed input")]
         public UInt32 ParseInputTestInvalidInput(string input)
         {
-            return ValidatorController.ParseInput(input);
+            return ValidatorController.ParseTriangleSideLength(input);
         }
 
     }

@@ -23,9 +23,9 @@ namespace TriangleChecker.Views
             {
                 UInt32 uintsideA, uintsideB, uintsideC;
 
-                uintsideA = ValidatorController.ParseInput(sideA.Text);
-                uintsideB = ValidatorController.ParseInput(sideB.Text);
-                uintsideC = ValidatorController.ParseInput(sideC.Text);
+                uintsideA = ValidatorController.ParseTriangleSideLength(sideA.Text);
+                uintsideB = ValidatorController.ParseTriangleSideLength(sideB.Text);
+                uintsideC = ValidatorController.ParseTriangleSideLength(sideC.Text);
 
                 if(uintsideA == 0  || uintsideB == 0 || uintsideC == 0)
                 {
