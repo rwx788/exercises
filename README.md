@@ -9,22 +9,71 @@
 # exercises
 Repo for the coding exercises and trying new technologies
 
-## k3s
+## k3s/k3d
 ### Project description
 Simple k3s with kubernetes dashboard.
 
-### Installation and deployment
+### Single node k3s installation and deployment
 Installation can be done by issuing `curl -sfL https://get.k3s.io | sh -` command.
+
+In order to allow writing to kubeconfig, following command should be used:
+```
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+```
+This will add this option to the systemd service:
+```
+ExecStart=/usr/local/bin/k3s \
+       server \
+       '--write-kubeconfig-mode' \
+       '644'
+ ```
 
 In order to deploy/upgrade dashboard, run `deploy.sh` shell script.
 To access the dashboard, create a secure channel by running:
 ```
-sudo k3s kubectl proxy
+k3s kubectl proxy
 ```
 
 Login token can be obtained using following command:
 ```
-sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
+k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
+```
+
+### k3d
+
+Installation can be accomplished by running:
+```
+wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+```
+
+Create new 3 nodes k3d cluster by executing:
+```
+k3d cluster create devcluster \
+--servers 3 \
+--api-port localhost:6444 \
+-p 80:80@loadbalancer
+```
+
+Export config:
+```
+k3d kubeconfig get devcluster > ~/.k3d/kubeconfig-devcluster.yaml
+export KUBECONFIG=~/.k3d/kubeconfig-devcluster.yaml
+```
+
+After that test access to the cluster by running:
+```
+kubectl config use-context k3d-devcluster
+kubectl cluster-info
+```
+
+Deploy nginx:
+```
+kubectl apply -f nginx/nginx.yaml
+```
+
+Test nginx being available over http:
+```
+curl http://localhost
 ```
 
 ## Xamarin
