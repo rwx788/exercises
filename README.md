@@ -1,5 +1,31 @@
+## Table of Contents
+* [exercises](#exercises)
+    * [k3s](#k3s)
+    * [Xamarin](#xamarin)
+        * [Project description](#project-description)
+        * [Issues](#issues)
+        * [Further steps](#further-steps)
+
 # exercises
 Repo for the coding exercises and trying new technologies
+
+## k3s
+### Project description
+Simple k3s with kubernetes dashboard.
+
+### Installation and deployment
+Installation can be done by issuing `curl -sfL https://get.k3s.io | sh -` command.
+
+In order to deploy/upgrade dashboard, run `deploy.sh` shell script.
+To access the dashboard, create a secure channel by running:
+```
+sudo k3s kubectl proxy
+```
+
+Login token can be obtained using following command:
+```
+sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
+```
 
 ## Xamarin
 ### Project description
