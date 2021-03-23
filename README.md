@@ -8,6 +8,7 @@
         * [Installation](#installation)
         * [Deployment](#deployment)
         * [Cluster Management](#cluster-management)
+        * [Local registry](#local-registry)
 * [Xamarin](#xamarin)
     * [Project description](#project-description)
     * [Issues](#issues)
@@ -96,6 +97,70 @@ To run commands in the pod:
 ```
 kubectl exec -it nginx-7848d4b86f-j28df -- bash
 ```
+
+### Local registry
+
+`k3d` can create dedicated docker registry if `--registry-create` is used.
+One of the disadvantages of this solution is that registry port will be randomly
+mapped to the host.
+
+So, in case cluster is created using following command:
+```
+k3d cluster create devcluster --registry-create
+```
+
+Run `docker ps -f 'name=k3d-devcluster-registry'` in order to figure out mapped
+port.
+
+More scalable solution is to run registry separately. Then you won't have to
+push images every time cluster is re-deployed, as well as keep port static.
+Use following command to create registry:
+```
+k3d registry create registry.localhost --port 12345
+```
+NOTE: `k3d` adds `k3d-` prefix to all created resources, so registry name will
+be: `k3d`
+
+In order to simplify name resolution, one could install `nss-myhostname`
+(`libnss-myhostname` for some distris). Do not forget to modify
+`/etc/nsswitch.conf` to include `myhostname` to `hosts:` line, e.g.:
+```
+hosts:  files mdns_minimal [NOTFOUND=return] dns myhostname
+```
+
+Alternative is to simply add entry to `/etc/hosts`:
+```
+127.0.0.1   k3d-registry.localhost
+```
+
+After that, you can point k3d to this registry with
+`--registry-use k3d-registry.localhost:12345` option:
+```
+k3d cluster create devcluster \
+--servers 3 \
+--api-port localhost:6444 \
+-p 80:80@loadbalancer \
+--registry-use k3d-registry.localhost:12345
+```
+
+Tag existing image and push to the created registry:
+```
+docker pull nginx:latest
+docker tag nginx:latest k3d-registry.localhost:12345/nginx:latest
+docker push k3d-registry.localhost:12345/nginx:latest
+```
+
+After that, it can be used in the manifest file (see nginx/nginx_localregistry.yaml):
+```
+...
+spec:
+  containers:
+  - name: nginx
+    image: k3d-registry.localhost:12345/nginx:latest
+    ports:
+    - containerPort: 80
+      protocol: TCP
+```      
 
 # Xamarin
 ## Project description
