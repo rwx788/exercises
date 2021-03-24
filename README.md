@@ -9,6 +9,10 @@
         * [Deployment](#deployment)
         * [Cluster Management](#cluster-management)
         * [Local registry](#local-registry)
+* [Serverless Application Model (AWS SAM)](#serverless-application-model-aws-sam)
+    * [Project description](#project-description)
+    * [Setup](#setup)
+    * [Testing](#testing)
 * [Xamarin](#xamarin)
     * [Project description](#project-description)
     * [Issues](#issues)
@@ -167,6 +171,44 @@ k3d cluster create devcluster \
 ```
 This is handy in case you want to use same manifest file as for production, and
 use dev pods available in the local mirror.
+
+# Serverless Application Model (AWS SAM)
+## Project description
+Idea of the project is to get familiar with serverless applications in aws.
+
+Installation of sam on linux is available [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html).
+
+## Setup
+After that run `sam init` command to setup the project using template.
+
+I've chosen template in ruby.
+
+Simple helloworld app in go, can be started locally by running `sam local start-api`.
+
+After that, access the service with `http://127.0.0.1:3000/hello`
+
+## Testing
+In order to test application, we can create event and trigger it.
+To generate event, following command can be used:
+```
+sam local generate-event apigateway aws-proxy --body "" --path "hello" --method GET
+```
+It can be saved as json and then used to test the application.
+This can be achieved by running:
+```
+sam local invoke "HelloWorldFunction" -e events/event.json
+```
+Same structure can be used to define event in the unit tests and pass it to
+the handler method in order to test the input.
+
+Unit tests can be executed same way as for normal ruby app:
+```
+ruby tests/unit/test_handler.rb
+```
+
+As of now, tests are not using RSpec, therefore are just executable files.
+
+
 
 # Xamarin
 ## Project description
