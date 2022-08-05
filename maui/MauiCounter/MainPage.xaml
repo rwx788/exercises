@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_counter.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ScrollView>
+        <Grid RowSpacing="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*"
+              Padding="{OnPlatform Default='30'}">
+
+
+            <Label x:Name="CounterValue"
+                   Grid.Row="2"
+                   Text="Counter: 0"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+            
+            <Button Text="Increment"
+                    Grid.Row="3"
+                    Clicked="OnIncrementButtonClicked" />
+            <Button Text="Reset"
+                    Grid.Row="4"
+                    Clicked="OnResetButtonClicked" />
+            <Button Text="Start new Thread"
+                    Grid.Row="5"
+                    Clicked="OnStartNewThread" />
+            <Button Text="Throw Handled Exception"
+                    Grid.Row="6"
+                    Clicked="OnThrowHandledException" />
+            <Button Text="Throw Unhandled Exception"
+                    Grid.Row="7"
+                    Clicked="OnThrowUnhandledException" />
+            <Button Text="Throw External Exception"
+                    Grid.Row="8"
+                    Clicked="OnThrowExceptionInExternalCode" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
